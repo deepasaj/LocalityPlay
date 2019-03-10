@@ -1,15 +1,17 @@
 // @flow
-
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import {VideoList} from './VideoList.js';
 
 type Props = {};
 type State = {
-  latitude: number,
-  longitude: number,
-  latitudeDelta: number,
-  longitudeDelta: number
+  region: {
+    latitude: number,
+    longitude: number,
+    latitudeDelta: number,
+    longitudeDelta: number
+  }
 };
 
 export default class App extends Component<Props, State> {
@@ -32,10 +34,7 @@ export default class App extends Component<Props, State> {
       <View style={styles.container}>
         <MapView provider={PROVIDER_GOOGLE} style={styles.map} 
                  region={this.state.region} onPress={this.onMapPress}/>
-        <Text style={styles.textContainer}>{this.state.region.latitude}</Text>
-        <Text style={styles.textContainer}>{this.state.region.longitude}</Text>
-        <Text style={styles.textContainer}>{this.state.region.latitudeDelta}</Text>
-        <Text style={styles.textContainer}>{this.state.region.longitudeDelta}</Text>
+        <VideoList latitude={this.state.region.latitude} longitude={this.state.region.longitude}/>
       </View>
     );
   }
@@ -47,9 +46,6 @@ const styles = StyleSheet.create({
    backgroundColor: 'white'
   },
   map: {
-    flex: 0.8
-  },
-  textContainer: {
-
+    flex: 0.6
   }
 });
