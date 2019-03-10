@@ -1,0 +1,6 @@
+# platform :ios, '9.0'
+target 'LocalityPlay' do
+# Pods for ReactNativeMaps
+pod 'GoogleMaps'
+end
+

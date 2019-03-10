@@ -43,7 +43,8 @@ export default class App extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1
+   flex: 1,
+   backgroundColor: 'white'
   },
   map: {
     flex: 0.8
