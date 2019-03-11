@@ -12,8 +12,8 @@ type State = {
 }
 
 const searchRadius = '10km'
-const maxResults = 10
-const apiKey = 'AIzaSyBQgeVIDDY56KAX9hXVfdQSQiqaEwSw0HU'
+const maxResults = 3
+const apiKey = 'AIzaSyAMyXVqhUkPaEeTJ7oAzmsQ7UuL73LgRNo'
 
 export class VideoList extends Component<Props, State> {
     state = {

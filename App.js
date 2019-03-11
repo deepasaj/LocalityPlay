@@ -1,14 +1,11 @@
 // @flow
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import {HomeScreen} from './HomeScreen.js';
-import {YoutubeScreen} from './YoutubeScreen.js';
 
 const AppNavigator = createStackNavigator({
-    Home: HomeScreen,
-    Video: YoutubeScreen
+    Home: HomeScreen
   }, {
-    headerMode: 'none',
-    initialRouteName: 'Home'
+    headerMode: 'none'
 });
 
 export default createAppContainer(AppNavigator);

@@ -1,6 +1,9 @@
 package com.localityplay;
 
 import com.facebook.react.ReactActivity;
+import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 public class MainActivity extends ReactActivity {
 

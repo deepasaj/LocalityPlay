@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
 import {View, Text, Image, TouchableHighlight, StyleSheet} from 'react-native';
+import { YouTubeStandaloneAndroid } from 'react-native-youtube';
 
 export class VideoItem extends Component {
+    playVideo = () => {
+        YouTubeStandaloneAndroid.playVideo({
+            apiKey: 'AIzaSyBQgeVIDDY56KAX9hXVfdQSQiqaEwSw0HU',     // Your YouTube Developer API Key
+            videoId: 'KVZ-P-ZI6W4',     // YouTube video ID
+            autoplay: true,             // Autoplay the video
+            lightboxMode: true
+          })
+    }
     render() {
         const item = this.props.item
         return (
-            <TouchableHighlight onPress={() => this.props.navigation.navigate('Video')} underlayColor="white">
+            <TouchableHighlight onPress={this.playVideo} underlayColor="white">
                 <View style={styles.container}>
                     <Image source={{uri: item.snippet.thumbnails.medium.url}} style={styles.imagePreview}/>
                     <View style={styles.textContainer}>
