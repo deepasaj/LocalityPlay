@@ -46,7 +46,7 @@ export class VideoList extends Component<Props, State> {
         return (
             <View style={styles.container}>
                 <FlatList data={this.state.videos}
-                            renderItem = {({item}) => <VideoItem item={item} navigation={this.props.navigation}/>}
+                            renderItem = {({item}) => <VideoItem item={item}/>}
                             keyExtractor = {item => item.id.videoId}
                             ItemSeparatorComponent={this.renderSeparator}
                             />

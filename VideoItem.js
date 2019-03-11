@@ -5,9 +5,9 @@ import { YouTubeStandaloneAndroid } from 'react-native-youtube';
 export class VideoItem extends Component {
     playVideo = () => {
         YouTubeStandaloneAndroid.playVideo({
-            apiKey: 'AIzaSyBQgeVIDDY56KAX9hXVfdQSQiqaEwSw0HU',     // Your YouTube Developer API Key
-            videoId: 'KVZ-P-ZI6W4',     // YouTube video ID
-            autoplay: true,             // Autoplay the video
+            apiKey: 'AIzaSyBQgeVIDDY56KAX9hXVfdQSQiqaEwSw0HU', 
+            videoId: this.props.item.id.videoId, 
+            autoplay: true,             
             lightboxMode: true
           })
     }
