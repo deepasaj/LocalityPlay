@@ -10,7 +10,8 @@ type Props = {
 type State = {
     videos: Array<mixed>,
     pageToken: string,
-    loadingMore: boolean
+    loadingMore: boolean,
+    refreshing: boolean
 }
 
 const searchRadius = '10km'
@@ -21,7 +22,8 @@ export class VideoList extends Component<Props, State> {
     state = {
         videos: [],
         pageToken: '',
-        loadingMore: false
+        loadingMore: false,
+        refreshing: false
     };
 
     componentDidMount() {
@@ -41,7 +43,7 @@ export class VideoList extends Component<Props, State> {
         return fetch(fetchUrl)
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    this.setState({videos: [...this.state.videos, ...responseJson.items], pageToken: responseJson.nextPageToken, loadingMore: false});
+                    this.setState({videos: [...this.state.videos, ...responseJson.items], pageToken: responseJson.nextPageToken, loadingMore: false, refreshing: false});
                 })
                 .catch((error) =>{
                     console.error(error);
@@ -59,6 +61,18 @@ export class VideoList extends Component<Props, State> {
           );
     }
 
+    handleRefresh = () => {
+        this.setState(
+            {
+                refreshing: true,
+                pageToken: ''
+            },
+            () => {
+              this.fetchLatestVideos();
+            }
+          );
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -68,6 +82,8 @@ export class VideoList extends Component<Props, State> {
                             ItemSeparatorComponent={this.renderSeparator}
                             onEndReached={this.handleLoadMore}
                             onEndReachedThreshold={0.5}
+                            onRefresh={this.handleRefresh}
+                            refreshing={this.state.refreshing}
                             />
             </View>
         );
