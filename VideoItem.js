@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, TouchableHighlight, StyleSheet} from 'react-native';
 
 export class VideoItem extends Component {
     render() {
         const item = this.props.item
         return (
-            <View style={styles.container}>
-                <Image source={{uri: item.snippet.thumbnails.medium.url}} style={styles.imagePreview}/>
-                <View style={styles.textContainer}>
-                    <Text numberOfLines={2} style={styles.heading}>{item.snippet.title}</Text>
-                    <Text numberOfLines={2} style={styles.description}>{item.snippet.description}</Text>
+            <TouchableHighlight onPress={() => this.props.navigation.navigate('Video')} underlayColor="white">
+                <View style={styles.container}>
+                    <Image source={{uri: item.snippet.thumbnails.medium.url}} style={styles.imagePreview}/>
+                    <View style={styles.textContainer}>
+                        <Text numberOfLines={2} style={styles.heading}>{item.snippet.title}</Text>
+                        <Text numberOfLines={2} style={styles.description}>{item.snippet.description}</Text>
+                    </View>
                 </View>
-            </View>
+            </TouchableHighlight>
         );
     }
 }
