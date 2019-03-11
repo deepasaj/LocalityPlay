@@ -21,6 +21,16 @@ export class VideoList extends Component<Props, State> {
     };
 
     componentDidMount() {
+        this.fetchLatestVideos()
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps !== this.props){
+            this.fetchLatestVideos();
+          }
+    }
+
+    fetchLatestVideos() {
         const locationCoords = `${this.props.latitude}%2C+${this.props.longitude}`
         return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&location=${locationCoords}&locationRadius=${searchRadius}&maxResults=${maxResults}&order=date&type=video%2Clist&key=${apiKey}`)
                 .then((response) => response.json())
@@ -37,7 +47,7 @@ export class VideoList extends Component<Props, State> {
             <View style={styles.container}>
                 <FlatList data={this.state.videos}
                             renderItem = {({item}) => <VideoItem item={item}/>}
-                            keyExtractor = {item => item.id}
+                            keyExtractor = {item => item.id.videoId}
                             ItemSeparatorComponent={this.renderSeparator}
                             />
             </View>
