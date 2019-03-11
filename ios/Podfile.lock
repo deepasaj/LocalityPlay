@@ -4,17 +4,21 @@ PODS:
   - GoogleMaps/Base (3.0.3)
   - GoogleMaps/Maps (3.0.3):
     - GoogleMaps/Base
+  - XCDYouTubeKit (2.7.3)
 
 DEPENDENCIES:
   - GoogleMaps
+  - XCDYouTubeKit (~> 2.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GoogleMaps
+    - XCDYouTubeKit
 
 SPEC CHECKSUMS:
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
+  XCDYouTubeKit: 3f4fd3eb3ed494a46a8f007b91315eed6dd6df1f
 
-PODFILE CHECKSUM: be6280a7c831348aeb638dc135718f14dcf05ca3
+PODFILE CHECKSUM: 385fc2410ce671b309ebb737793f631e381787bd
 
 COCOAPODS: 1.6.1

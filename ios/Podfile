@@ -1,6 +1,7 @@
 # platform :ios, '9.0'
 target 'LocalityPlay' do
 # Pods for ReactNativeMaps
-pod 'GoogleMaps'
+  pod 'GoogleMaps'
+  pod 'XCDYouTubeKit', '~> 2.5'
 end
 

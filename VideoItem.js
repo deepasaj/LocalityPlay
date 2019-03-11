@@ -1,16 +1,28 @@
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableHighlight, StyleSheet} from 'react-native';
-import { YouTubeStandaloneAndroid } from 'react-native-youtube';
+import {View, Text, Image, TouchableHighlight, StyleSheet, Platform} from 'react-native';
+import { YouTubeStandaloneIOS, YouTubeStandaloneAndroid } from 'react-native-youtube';
 
 export class VideoItem extends Component {
-    playVideo = () => {
+    playVideoInAndroid = () => {
         YouTubeStandaloneAndroid.playVideo({
             apiKey: 'AIzaSyBQgeVIDDY56KAX9hXVfdQSQiqaEwSw0HU', 
             videoId: this.props.item.id.videoId, 
             autoplay: true,             
             lightboxMode: true
-          })
+          });
     }
+
+    playVideoInIos = () => {
+        YouTubeStandaloneIOS.playVideo(this.props.item.id.videoId)
+    }
+
+    playVideo = () => {
+        Platform.select({
+            ios: this.playVideoInIos,
+            android: this.playVideoInAndroid
+        })()
+    }
+
     render() {
         const item = this.props.item
         return (
