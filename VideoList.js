@@ -16,7 +16,7 @@ type State = {
 
 const searchRadius = '10km'
 const maxResults = 3
-const apiKey = 'AIzaSyAMyXVqhUkPaEeTJ7oAzmsQ7UuL73LgRNo'
+const apiKey = 'AIzaSyDPXbRYJR8-DfTa1U7P1pWxL_TqKh7yobY'
 
 export class VideoList extends Component<Props, State> {
     state = {
@@ -32,6 +32,12 @@ export class VideoList extends Component<Props, State> {
 
     componentWillReceiveProps(nextProps) {
         if(nextProps !== this.props){
+            this.setState({
+                videos: [],
+                pageToken: '',
+                loadingMore: false,
+                refreshing: false
+            })
             this.fetchLatestVideos();
           }
     }
